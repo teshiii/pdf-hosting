@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+</head>
+<body>
+    <h1>残り時間</h1>
+  <div id="timer">05:00</div>
+
+  <script>
+    let duration = 40 * 60; // 5分（秒単位）
+    let display = document.getElementById('timer');
+
+    function startTimer(seconds) {
+      let timer = seconds;
+      let interval = setInterval(function () {
+        let minutes = Math.floor(timer / 60);
+        let secs = timer % 60;
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        secs = secs < 10 ? "0" + secs : secs;
+
+        display.textContent = `${minutes}:${secs}`;
+
+        if (--timer < 0) {
+          clearInterval(interval);
+          display.textContent = "時間切れ！";
+        }
+      }, 1000);
+    }
+
+    startTimer(duration);
+  </script>
+        <iframe src="問題.pdf" width="100%" height="1024px">問題（教科：Mula）</iframe>
+</body>
+</html>
